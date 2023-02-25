@@ -1,23 +1,18 @@
 <template>
   <div id="app">
-    <ul>
-      <LearningResource
-        v-for="res in storedResources"
-        :title="res.title"
-        :key="res.id"
-        :description="res.description"
-        :link="res.link"
-      >
-      </LearningResource>
-    </ul>
+    <TheHeaderVue title="Learning Resources" ></TheHeaderVue>
+    <StoredResources :resources="storedResources"></StoredResources>
   </div>
 </template>
 
 <script>
-import LearningResource from './components/LearningResource.vue';
+import TheHeaderVue from './components/Layouts/TheHeader.vue';
+import StoredResources from './components/StoreResources.vue'
+
 export default {
   components: {
-    LearningResource,
+    StoredResources,
+    TheHeaderVue
   },
   data() {
     return {
