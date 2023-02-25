@@ -1,26 +1,57 @@
 <template>
-<div id="app">
-
-    <h1>Hi There</h1>
-</div>
+  <div id="app">
+    <ul>
+      <LearningResource
+        v-for="res in storedResources"
+        :title="res.title"
+        :key="res.id"
+        :description="res.description"
+        :link="res.link"
+      >
+      </LearningResource>
+    </ul>
+  </div>
 </template>
 
-    
 <script>
+import LearningResource from './components/LearningResource.vue';
+export default {
+  components: {
+    LearningResource,
+  },
+  data() {
+    return {
+      storedResources: [
+        {
+          id: 'official-guide',
+          title: 'Official Guide',
+          description: 'The official Vue.js documentation.',
+          link: 'https://vuejs.org',
+        },
+        {
+          id: 'google',
+          title: 'Google',
+          description: 'Learn to google...',
+          link: 'https://google.org',
+        },
+      ],
+    };
+  },
+};
 </script>
-    
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }
 </style>
