@@ -1,11 +1,11 @@
 <template>
-  <base-dailog v-if="isEmpty">
+  <base-dailog v-if="isEmpty" title="Invalid Input" @close="onConfirmError">
   <template #default>
     <p>Unfortunately, at least one input value is invalid.</p>
     <p>Please check all inputs and make sure you enter at least a few characters into each input field.</p>
   </template>
   <template #actions>
-    <base-button @click="confirmError">Okay</base-button>
+    <base-button @click="onConfirmError">Okay</base-button>
   </template>
 </base-dailog>
   <base-card>
@@ -63,6 +63,9 @@ export default {
       }
       this.addResources(enteredTitle, enteredDescription, enteredUrl);
     },
+    onConfirmError(){
+      this.isEmpty=false
+    }
   },
 };
 </script>
