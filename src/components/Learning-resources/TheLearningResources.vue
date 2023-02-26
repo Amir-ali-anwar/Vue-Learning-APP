@@ -1,6 +1,8 @@
 <template>
   <base-card>
-    <base-button :mode="storedResButtonMode" @click="settoggleTab('store-resources')"
+    <base-button
+      :mode="storedResButtonMode"
+      @click="settoggleTab('store-resources')"
       >Stored Resources</base-button
     >
     <base-button :mode="addResButtonMode" @click="settoggleTab('add-resource')"
@@ -11,7 +13,7 @@
 </template>
   <script>
 import StoreResources from './StoreResources.vue';
-import AddResource from './AddResource.vue';
+import AddResource from './AddLearningResource.vue';
 export default {
   components: {
     StoreResources,
@@ -38,14 +40,22 @@ export default {
   },
   provide() {
     return {
-      
       resources: this.storedResources,
+      addResources:this.addResources
     };
   },
   methods: {
     settoggleTab(tab) {
       this.selectedTab = tab;
     },
+    addResources(title,description,link){
+      const newresource={
+        id: new Date().toISOString(),
+        title,description,link
+      }
+      this.storedResources.unshift(newresource);
+      this.selectedTab = 'stored-resources';
+    }
   },
   computed:{
     storedResButtonMode() {
