@@ -1,22 +1,22 @@
 <template>
-    <ul>
-        <LearningResource
-          v-for="res in resources"
-          :title="res.title"
-          :key="res.id"
-          :description="res.description"
-          :link="res.link"
-        >
-        </LearningResource>
-      </ul>
+  <ul>
+    <LearningResource
+    v-for="res in resources"
+    :title="res.title"
+    :key="res.id"
+    :description="res.description"
+    :link="res.link"
+    >
+  </LearningResource>
+</ul>
 </template>
 <script>
 import LearningResource from './LearningResource.vue'
 export default {
-    props:['resources'],
-    components:{
-        LearningResource
-    }
+  inject: ['resources'],
+  components: {
+    LearningResource
+  }
 }
 </script>
 <style scoped>
