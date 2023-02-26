@@ -1,9 +1,9 @@
 <template>
   <base-card>
-    <base-button @click="settoggleTab('stored-resources')"
+    <base-button :mode="storedResButtonMode" @click="settoggleTab('store-resources')"
       >Stored Resources</base-button
     >
-    <base-button @click="settoggleTab('add-resource')"
+    <base-button :mode="addResButtonMode" @click="settoggleTab('add-resource')"
       >Add Resources</base-button
     >
   </base-card>
@@ -47,5 +47,13 @@ export default {
       this.selectedTab = tab;
     },
   },
+  computed:{
+    storedResButtonMode() {
+      return this.selectedTab === 'stored-resources' ? null : 'flat';
+    },
+    addResButtonMode() {
+      return this.selectedTab === 'add-resource' ? null : 'flat';
+    },
+  }
 };
 </script>
